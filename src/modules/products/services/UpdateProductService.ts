@@ -8,6 +8,7 @@ interface IRequest {
   name: string;
   price: number;
   base_value: number;
+  status: boolean;
   quantity: number;
 }
 
@@ -17,6 +18,7 @@ class UpdateProductService {
     name,
     price,
     base_value,
+    status,
     quantity,
   }: IRequest): Promise<Product> {
     const productsRepository = getCustomRepository(ProductRepository);
@@ -37,6 +39,7 @@ class UpdateProductService {
     product.price = price;
     product.base_value = base_value;
     product.quantity = quantity;
+    product.status = status;
 
     await productsRepository.save(product);
 
@@ -44,4 +47,4 @@ class UpdateProductService {
   }
 }
 
-export default { UpdateProductService };
+export default UpdateProductService;

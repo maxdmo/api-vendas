@@ -20,4 +20,4 @@ class DeleteProductService {
   }
 }
 
-export default { DeleteProductService };
+export default DeleteProductService;

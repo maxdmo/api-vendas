@@ -38,4 +38,4 @@ class CreateProductService {
   }
 }
 
-export default { CreateProductService };
+export default CreateProductService;

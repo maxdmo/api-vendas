@@ -12,4 +12,4 @@ class ListProductService {
   }
 }
 
-export default { ListProductService };
+export default ListProductService;
