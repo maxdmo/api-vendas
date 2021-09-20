@@ -25,18 +25,22 @@ export default class ProductsController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, price, base_value, quantity } = request.body;
+    try {
+      const { name, price, base_value, quantity } = request.body;
 
-    const createProduct = new CreateProductService();
+      const createProduct = new CreateProductService();
 
-    const product = await createProduct.execute({
-      name,
-      price,
-      base_value,
-      quantity,
-    });
+      const product = await createProduct.execute({
+        name,
+        price,
+        base_value,
+        quantity,
+      });
 
-    return response.json(product);
+      return response.json(product);
+    } catch (error: any) {
+      return response.status(error.statusCode).json(error);
+    }
   }
 
   public async update(request: Request, response: Response): Promise<Response> {

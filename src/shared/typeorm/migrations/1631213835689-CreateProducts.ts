@@ -46,6 +46,11 @@ export class CreateProducts1631213835689 implements MigrationInterface {
             type: 'timestamp with time zone',
             default: 'now()',
           },
+          {
+            name: 'deleted_at',
+            type: 'timestamp with time zone',
+            isNullable: true,
+          },
         ],
       }),
     );
