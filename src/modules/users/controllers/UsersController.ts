@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import CreateSessionService from '../services/CreateSessionsService';
 import CreateUserService from '../services/CreateUserService';
 import ListUserService from '../services/ListUserService';
 
@@ -19,6 +20,26 @@ export default class UsersController {
 
       const user = await createUser.execute({
         name,
+        email,
+        password,
+      });
+
+      return response.json(user);
+    } catch (error: any) {
+      return response.status(error.statusCode).json(error);
+    }
+  }
+
+  public async createSession(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    try {
+      const { email, password } = request.body;
+
+      const createUser = new CreateSessionService();
+
+      const user = await createUser.execute({
         email,
         password,
       });
