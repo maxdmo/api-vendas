@@ -15,7 +15,7 @@ export default class SessionsController {
 
       return response.json(result);
     } catch (error: any) {
-      return response.status(error.statusCode).json(error);
+      return response.status(500).json(error);
     }
   }
 }
